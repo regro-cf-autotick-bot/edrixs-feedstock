@@ -12,5 +12,8 @@
 # build Fortran extension via f2py
 # $PYTHON setup.py build_ext --library-dirs=$LIBRARY_LIB
 
+curl --output /tmp/rsh-0.17-102.el9.x86_64.rpm https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/r/rsh-0.17-102.el9.x86_64.rpm
+sudo yum install /tmp/rsh-0.17-102.el9.x86_64.rpm -y
+
 # install python parts
 $PYTHON -m pip install . --no-deps --ignore-installed -vvv
