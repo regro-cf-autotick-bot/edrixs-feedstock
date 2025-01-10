@@ -185,4 +185,5 @@ Feedstock Maintainers
 
 * [@mpmdean](https://github.com/mpmdean/)
 * [@mrakitin](https://github.com/mrakitin/)
+* [@thomashopkins32](https://github.com/thomashopkins32/)
 
