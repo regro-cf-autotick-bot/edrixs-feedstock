@@ -1,22 +1,27 @@
 {% set name = "edrixs" %}
-{% set version = "0.0.8" %}
+{% set version = "0.1.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 121cfb171423087013156390bd2b7187a046091fbeb7985099f48ebd74b6e69e
+  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/NSLS-II/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: bb24c96cc46c730efcd72113117f5868140cdca1b162964844b56c215a5c9c17
 
 build:
-  number: 2
-  skip: true  # [not unix]
+  number: 0
+  skip: true  # [not linux]
 
 requirements:
   build:
     - make
+    - cmake
+    - {{ stdlib('c') }}
     - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - python
     - pip
@@ -25,6 +30,7 @@ requirements:
     - numpy
     - openblas
     - openmpi
+    - setuptools
   run:
     - python
     - libblas * *openblas
@@ -42,10 +48,10 @@ test:
   imports:
     - edrixs
   files:
-    - {{ environ["RECIPE_DIR"] }}/example_2_AIM_XAS.py
+    - example_2_AIM_XAS.py
   commands:
-    - python {{ environ["RECIPE_DIR"] }}/example_2_AIM_XAS.py
-    - mpiexec -n 2 python {{ environ["RECIPE_DIR"] }}/example_2_AIM_XAS.py
+    - python example_2_AIM_XAS.py
+    - mpiexec -n 2 python example_2_AIM_XAS.py
 
 about:
   home: https://github.com/NSLS-II/edrixs
@@ -57,3 +63,4 @@ extra:
   recipe-maintainers:
     - mpmdean
     - mrakitin
+    - thomashopkins32
