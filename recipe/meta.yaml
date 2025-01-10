@@ -16,8 +16,11 @@ build:
 
 requirements:
   build:
+    - make
     - cmake
     - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - python
     - pip
