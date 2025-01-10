@@ -30,6 +30,7 @@ requirements:
     - numpy
     - openblas
     - openmpi
+    - setuptools
   run:
     - python
     - libblas * *openblas
